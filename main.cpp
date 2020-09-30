@@ -29,6 +29,7 @@ int main()
 
 	imshow("Output",dispMat);
 
+
 	waitKey(0);
 	return 0;
 }
