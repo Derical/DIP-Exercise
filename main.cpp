@@ -19,4 +19,6 @@ int main()
 	cv::imshow("original Mat", src_color);
 	//等待用户按键
 	waitKey(0);
+
+	return 0;
 }
