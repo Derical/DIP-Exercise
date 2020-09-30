@@ -76,8 +76,8 @@ void Calc_histgram(cv::Mat src)
 int main()
 {
 	/*
-	* Exercise 4、5:
-	*		计算并绘制直方图
+	* Exercise 4:
+	*		计算直方图
 	*/
 
 	cv::Mat src = imread("C:\\Users\\STAR ZHANG\\Pictures\\3.jpg");
