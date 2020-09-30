@@ -4,21 +4,36 @@ using namespace cv;
 int main()
 {
 	/*
-	* Exercise 1
-	*		:RGB三通道分离
+	* Exercise2:
+	*		调用本机摄像头
 	*/
-	cv::Mat src_color = imread("C:/Users/STAR ZHANG/Pictures/4.png");
-	std::vector<cv::Mat> channels;
-	cv::split(src_color, channels);
-	cv::Mat B = channels.at(0);
-	cv::Mat G = channels.at(1);
-	cv::Mat R = channels.at(2);
-	cv::imshow("red", R);
-	cv::imshow("blue", B);
-	cv::imshow("green", G);
-	cv::imshow("original Mat", src_color);
-	//等待用户按键
-	waitKey(0);
+
+	VideoCapture cap;
+	cap.open(0);
+
+	if (!cap.isOpened())
+	{
+		std::cout << "不能打开视频文件" << std::endl;
+		return -1;
+	}
+
+	double fps = cap.get(CAP_PROP_FPS);
+	std::cout << "fps" << fps << std::endl;
+	while (1)
+	{
+		cv::Mat frame;
+		bool rSucess = cap.read(frame);
+		if (!rSucess)
+		{
+			std::cout << "不能从视频文件中读取帧数" << std::endl;
+			break;
+		}
+		else
+		{
+			cv::imshow("frame",frame);
+		}
+		waitKey(30);
+	}
 
 	return 0;
 }
